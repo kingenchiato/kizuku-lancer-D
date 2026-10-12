@@ -1,0 +1,90 @@
+============================================================
+KIZUKU LP 編集マニュアル（素人向け）
+ショウヨウ株式会社 / 第1拠点：堺・なかもず
+============================================================
+
+■ このサイトの構成
+  index.html     … メインLP（縦スクロール）
+  contact.html   … お問い合わせ誘導ページ
+  css/style.css  … デザイン（色・余白・レイアウト）
+  js/main.js     … スクロール演出など
+  assets/        … 画像・ロゴ
+
+■ 無料で編集できるツール
+  1. メモ帳（Windows標準）または
+  2. VS Code（無料：https://code.visualstudio.com/）
+  3. 画像差し替えは、同じファイル名で上書き保存
+
+■ よくある修正
+
+【1】開催日程・会場を変える
+  ファイル：index.html
+  探す言葉：hero__facts
+  および「開催概要」表（sheet 内の table）を書き換え
+  ※時間表記は「9:00〜17:00」の形で揃えてください
+
+【2】キャッチコピーを変える
+  ファイル：index.html
+  探す言葉：hero__catch / hero__lead / hero__name
+
+【3】お問い合わせフォームURLを変える
+  ファイル：contact.html
+  探す言葉：www.shouyou.co.jp/contact/
+  href="..." のURLだけ差し替え
+  ※フォームでは「新入社員向け研修」にチェック案内を残してください
+
+【4】写真を差し替える
+  assets/img/ または assets/gallery/ の画像を
+  同じファイル名で上書きしてください。
+  ※人物写真は日本人のみを使用してください。
+
+  主な差し替えポイント：
+  - FV右側写真（自動で交互に表示）：assets/gallery/hero-room.jpg と hero-group.jpg
+  - 育成方針写真：assets/img/portrait-young.jpg
+  - 講師写真：assets/img/instructor.jpg / instructor-work.jpg
+  - ロゴ：assets/logo/shouyou-logo.png / shouyou-mark.png
+
+【5】色を変える（拠点ごとの差別化）
+  ファイル：css/style.css の先頭 :root 部分
+  --cyan   （信頼・前向き：現在 #00b5e2）
+  --green  （成長：現在 #20a456）
+  --yellow （強調：現在 #fff100）
+  を変更すると、拠点ごとの色味を変えられます。
+  ※共通ブランド感を保つため、KIZUKUロゴ周りの構成は大きく変えないでください。
+
+【6】拠点名を変える（6拠点展開時）
+  index.html / contact.html 内の
+  「SAKAI / NAKAMOZU」「堺・なかもず」を各拠点名に置換
+  header の logo__k span も合わせて変更
+
+【7】ご支給の動画・写真・講師写真を入れる
+  同じファイル名で、次の場所へ保存する（無ければ新規で可）
+  - 研修理解の動画 … assets/video/kizuku-guide.mp4
+  - 会場の動画     … assets/video/kizuku-floor.mp4
+  - 追加写真       … assets/gallery/client-01.jpg 〜 client-04.jpg
+  - 小川講師       … assets/img/instructor-ogawa.jpg
+  - 重松講師       … assets/img/instructor-shigematsu.jpg
+  - 池田直和       … assets/img/instructor-ikeda.jpg
+  写真枠は、ファイルを置いたあと index.html の「写真枠」の中へ
+  img タグを足すか、既存の研修写真を上書きしてください。
+  人物の名札が読める写真は、ぼかしてから載せてください。
+
+【8】いまの開催情報（2026年10月時点の指定）
+  日程：2027年4月5日（月）〜4月23日（金） 9:00〜17:00（平日15日）
+  会場：堺市産業振興センター（なかもず駅8番出口 徒歩約4分）
+        大阪府堺市北区長曽根町183-5
+  費用：1名 420,000円（税別）　定員50名（先着）
+  締切：2026年12月25日（金）
+  数字：満足度97.4%／リピート95%／卒業生500名以上
+        ※本部実績の11年間累計値（2026年10月時点）
+
+■ 確認方法
+  index.html をダブルクリックしてブラウザで開く
+  またはフォルダをサーバーにアップロード
+
+■ 注意
+  ・HTMLタグ（< >）は消さないでください
+  ・画像はできるだけ大きいサイズ（横1200px以上）がきれいに見えます
+  ・不明点があれば制作者へご連絡ください
+
+============================================================
