@@ -35,13 +35,35 @@
   onScroll();
 
   const slides = document.querySelectorAll(".hero__slides img");
+  const dots = document.querySelectorAll(".hero__dot");
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (slides.length > 1 && !reduce) {
+  if (slides.length > 1) {
     let index = 0;
-    window.setInterval(() => {
-      slides[index].classList.remove("is-on");
-      index = (index + 1) % slides.length;
-      slides[index].classList.add("is-on");
-    }, 5200);
+    const show = (n) => {
+      index = n;
+      slides.forEach((img, i) => img.classList.toggle("is-on", i === n));
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-on", i === n);
+        dot.setAttribute("aria-selected", i === n ? "true" : "false");
+      });
+    };
+    dots.forEach((dot, i) => dot.addEventListener("click", () => show(i)));
+    if (!reduce) {
+      window.setInterval(() => show((index + 1) % slides.length), 5200);
+    }
   }
+
+  document.querySelectorAll(".vslot__play").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const video = document.createElement("video");
+      video.controls = true;
+      video.playsInline = true;
+      video.preload = "metadata";
+      video.poster = btn.dataset.poster || "";
+      video.src = btn.dataset.src;
+      btn.replaceWith(video);
+      const play = video.play();
+      if (play && typeof play.catch === "function") play.catch(() => {});
+    });
+  });
 })();
