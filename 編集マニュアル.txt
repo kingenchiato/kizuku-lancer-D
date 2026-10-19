@@ -62,7 +62,6 @@ KIZUKU LP 編集マニュアル（素人向け）
   - 研修理解の動画 … assets/video/kizuku-guide.mp4
   - 会場の動画     … assets/video/kizuku-floor.mp4
   - 追加写真       … assets/gallery/client-01.jpg 〜 client-04.jpg
-  - 小川講師       … assets/img/instructor-ogawa.jpg
   - 重松講師       … assets/img/instructor-shigematsu.jpg
   - 池田直和       … assets/img/instructor-ikeda.jpg
   写真枠は、ファイルを置いたあと index.html の「写真枠」の中へ
