@@ -66,4 +66,15 @@
       if (play && typeof play.catch === "function") play.catch(() => {});
     });
   });
+
+  document.querySelectorAll(".vslot__video").forEach((video) => {
+    const maxTime = Number(video.dataset.maxTime);
+    if (maxTime > 0) {
+      video.addEventListener("timeupdate", () => {
+        if (video.currentTime >= maxTime) video.currentTime = 0;
+      });
+    }
+    const play = video.play();
+    if (play && typeof play.catch === "function") play.catch(() => {});
+  });
 })();
