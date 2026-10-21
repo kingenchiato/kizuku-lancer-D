@@ -67,14 +67,41 @@
     });
   });
 
-  document.querySelectorAll(".vslot__video").forEach((video) => {
+  const playInline = (video) => {
+    video.muted = true;
+    video.playsInline = true;
+    if (!video.paused) return;
+    const play = video.play();
+    if (play && typeof play.catch === "function") play.catch(() => {});
+  };
+
+  document.querySelectorAll(".overview-film__video").forEach((video) => {
+    const show = () => video.classList.add("is-on");
+    video.addEventListener("playing", show);
+    video.addEventListener("timeupdate", () => {
+      if (video.currentTime > 0.05) show();
+    });
+  });
+
+  const inlineVideos = document.querySelectorAll(".vslot__video, .overview-film__video");
+  inlineVideos.forEach((video) => {
     const maxTime = Number(video.dataset.maxTime);
     if (maxTime > 0) {
       video.addEventListener("timeupdate", () => {
         if (video.currentTime >= maxTime) video.currentTime = 0;
       });
     }
-    const play = video.play();
-    if (play && typeof play.catch === "function") play.catch(() => {});
+    playInline(video);
+    video.addEventListener("canplay", () => playInline(video));
+    video.addEventListener("loadeddata", () => playInline(video));
   });
+
+  if ("IntersectionObserver" in window) {
+    const videoIo = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) playInline(entry.target);
+      });
+    }, { threshold: 0.2 });
+    inlineVideos.forEach((video) => videoIo.observe(video));
+  }
 })();
